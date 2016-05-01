@@ -1,7 +1,7 @@
 {
   "name": "vim-mode-plus-project-fiind-from-search",
   "main": "./lib/main",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Seamless flow from vmp's search to find-and-replace's project-find ",
   "activationCommands": {
     "atom-workspace": [
