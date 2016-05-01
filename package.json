@@ -9,7 +9,7 @@
     ]
   },
   "keywords": [],
-  "repository": "https://github.com/t9md/atom-vim-mode-plus-project-fiind-from-search",
+  "repository": "https://github.com/t9md/atom-vim-mode-plus-project-find-from-search",
   "license": "MIT",
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
