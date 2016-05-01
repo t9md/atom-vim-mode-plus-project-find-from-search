@@ -3,6 +3,11 @@
   "main": "./lib/main",
   "version": "0.0.0",
   "description": "Seamless flow from vmp's search to find-and-replace's project-find ",
+  "activationCommands": {
+    "atom-workspace": [
+      "vim-mode-plus-user:project-find-from-search"
+    ]
+  },
   "keywords": [],
   "repository": "https://github.com/t9md/atom-vim-mode-plus-project-fiind-from-search",
   "license": "MIT",

@@ -1,6 +1,8 @@
-# atom-vim-mode-plus-project-fiind-from-search
+# vim-mode-plus-project-find-from-search
 
 Seamless flow from vmp's search to find-and-replace's project-find
+
+If you like this package, you'd also like [project-find-navigation](https://atom.io/packages/project-find-navigation).
 
 # Keymap
 

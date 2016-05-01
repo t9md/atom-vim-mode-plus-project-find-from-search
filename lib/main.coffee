@@ -1,39 +1,48 @@
-{CompositeDisposable} = require 'atom'
+{CompositeDisposable, Emitter} = require 'atom'
 getEditorState = null
 
 module.exports =
   activate: ->
-    @subscription = atom.commands.add 'atom-text-editor',
-      'vim-mode-plus-user:project-find-from-search': => @projectFindFromSearch()
+    @subscriptions = new CompositeDisposable
+    @emitter = new Emitter
+    @subscribe atom.commands.add 'atom-text-editor',
+      'vim-mode-plus-user:project-find-from-search': =>
+        if getEditorState?
+          @projectFindFromSearch()
+        else
+          @onDidGetVimModePlus => @projectFindFromSearch()
 
   deactivate: ->
     @subscriptions.dispose()
-    @subscriptions = null
-
-  consumeVimModePlus: (service) ->
-    {getEditorState} = service
-
-  onDidGetPackage: (packageName, fn) ->
-    if atom.packages.isPackageActive(packageName)
-      fn(atom.packages.getActivePackage(packageName))
-    else
-      atom.packages.onDidActivatePackage (pkg) ->
-        fn(pkg) if pkg.name is packageName
-
-  getVimState: ->
-    editor = atom.workspace.getActiveTextEditor()
-    getEditorState(editor)
+    {@subscriptions, @emitter} = {}
 
   subscribe: (args...) ->
     @subscriptions.add args...
 
+  onDidGetVimModePlus: (fn) ->
+    @emitter.on 'did-get-vim-mode-plus', fn
+
+  consumeVimModePlus: (service) ->
+    {getEditorState} = service
+    @emitter.emit 'did-get-vim-mode-plus'
+
+  getPackage: (name, fn) ->
+    new Promise (resolve) ->
+      if atom.packages.isPackageActive(name)
+        pkg = atom.packages.getActivePackage(name)
+        resolve(pkg)
+      else
+        atom.packages.onDidActivatePackage (pkg) ->
+          resolve(pkg) if pkg.name is name
+
   projectFindFromSearch: ->
-    vimState = @getVimState()
+    vimState = getEditorState(atom.workspace.getActiveTextEditor())
     text = vimState.searchInput.editor.getText()
     vimState.searchInput.confirm()
 
-    atom.commands.dispatch(@getVimState().editorElement, 'project-find:show')
-    @onDidGetPackage 'find-and-replace', (pkg) ->
+    atom.commands.dispatch(vimState.editorElement, 'project-find:show')
+    
+    @getPackage('find-and-replace').then (pkg) ->
       {projectFindView} = pkg.mainModule
       projectFindView.findEditor.setText(text)
       projectFindView.confirm()
