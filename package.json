@@ -1,0 +1,12 @@
+{
+  "name": "vim-mode-plus-project-fiind-from-search",
+  "main": "./lib/main",
+  "version": "0.0.0",
+  "description": "Seamless flow from vmp's search to project-find",
+  "keywords": [],
+  "repository": "https://github.com/t9md/atom-vim-mode-plus-project-fiind-from-search",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  }
+}
