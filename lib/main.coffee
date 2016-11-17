@@ -3,6 +3,15 @@ getEditorState = null
 
 module.exports =
   activate: ->
+    message = """
+    ## DEPRECATED: **vim-mode-plus-project-find-from-search**
+    - This package's feature was merged to vim-mode-plus's core from vim-mode-plus v0.68.0.
+    - Will be unpublished soon.
+    - Remove your custom keymap for this package
+    - vim-mode-plus set `cmd-enter` as default keymap for macOS user.
+    """.replace(/_/g, ' ')
+    atom.notifications.addWarning(message, dismissable: true)
+
     @subscriptions = new CompositeDisposable
     @emitter = new Emitter
     @subscribe atom.commands.add 'atom-text-editor',
@@ -41,7 +50,6 @@ module.exports =
     vimState.searchInput.confirm()
 
     atom.commands.dispatch(vimState.editorElement, 'project-find:show')
-    
     @getPackage('find-and-replace').then (pkg) ->
       {projectFindView} = pkg.mainModule
       projectFindView.findEditor.setText(text)

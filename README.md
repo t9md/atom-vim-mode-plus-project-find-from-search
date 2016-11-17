@@ -1,4 +1,22 @@
-# vim-mode-plus-project-find-from-search
+
+# [DEPRECATED] vim-mode-plus-project-find-from-search
+
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+
+- This package was merged into vim-mode-plus from vim-mode-plus v0.68.0.
+- Will be unpublished as soon as atom v1.13 become stable.
+
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
+:rotating_light: :rotating_light: :rotating_light: :rotating_light:
 
 Seamless flow from vmp's search to find-and-replace's project-find.
 
