@@ -1,4 +1,6 @@
 
+Unpublished from apm registry at 2017.02.18.
+
 # [DEPRECATED] vim-mode-plus-project-find-from-search
 
 :rotating_light: :rotating_light: :rotating_light: :rotating_light:
